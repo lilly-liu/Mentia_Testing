@@ -15,7 +15,8 @@ def get_transcription(transcription_id):
     return response.json()
 
 
-if __name__ == "__main__":
+def printTrans():
+    sentence = ""
     parser = argparse.ArgumentParser()
     parser.add_argument("transcription_id")
     args = parser.parse_args()
@@ -23,7 +24,11 @@ if __name__ == "__main__":
     response_json = get_transcription(transcription_id)
     if response_json['status'] == "completed":
         for word in response_json['words']:
+            sentence = sentence + word['text'] + " "
             print(word['text'], end=" ")
+        return sentence
     else:
         print("current status of transcription request: {}".format(
               response_json['status']))
+if __name__ == "__main__":
+    printTrans()
