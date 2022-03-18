@@ -28,7 +28,7 @@ def upload_file_to_api(filename):
     response = requests.post("".join([API_URL, "upload"]), headers=headers,
                              data=read_file(filename))
     return response.json()
-    
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("filename")
